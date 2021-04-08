@@ -41,11 +41,16 @@ greatinc = max(month_changes)
 monthinc = months[month_changes.index(greatinc)+1]
 greatdec = min(month_changes)
 monthdec = months[month_changes.index(greatdec)+1]
-        
+
+#print the results
 print("Financial Analysis")
 print("-------------------------------------")
 print(f"Total Months: {total_months}")
 print(f"Total: ${net_total}")
-print(f"Average Change: ${averagechange}")
-print(f"Greatest Increase in Profits: ({monthinc}) {greatinc}")
-print(f"Greatest Decrease in Profits: ({monthdec}) {greatdec}")
+print(f"Average Change: ${averagechange:.2f}")
+print(f"Greatest Increase in Profits: {monthinc} (${greatinc})")
+print(f"Greatest Decrease in Profits: {monthdec} (${greatdec})")
+
+output_path = os.path.join("Analysis", "Analysis.txt")
+   # with open(output_path, 'w', newline='') as txtfile:
+        
