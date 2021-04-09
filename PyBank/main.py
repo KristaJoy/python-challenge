@@ -3,7 +3,7 @@ import csv
 
 #import
 # import csv data from this path
-csvpath = os.path.join("Resources", "budget_data.csv")
+csvpath = os.path.join('Resources', 'budget_data.csv')
 
 #open csv
 with open(csvpath, 'r') as csvfile:
@@ -42,6 +42,7 @@ monthinc = months[month_changes.index(greatinc)+1]
 greatdec = min(month_changes)
 monthdec = months[month_changes.index(greatdec)+1]
 
+
 #print the results
 print("Financial Analysis")
 print("-------------------------------------")
@@ -51,6 +52,17 @@ print(f"Average Change: ${averagechange:.2f}")
 print(f"Greatest Increase in Profits: {monthinc} (${greatinc})")
 print(f"Greatest Decrease in Profits: {monthdec} (${greatdec})")
 
-output_path = os.path.join("Analysis", "Analysis.txt")
-   # with open(output_path, 'w', newline='') as txtfile:
-        
+#output results
+output_path = os.path.join('Analysis', 'Analysis.txt')
+with open(output_path, 'w') as output:
+    
+    csvwriter = csv.writer(output, delimiter=',')
+
+    # Write the Analysis
+    csvwriter.writerow(["Financial Analysis"])
+    csvwriter.writerow(["-------------------------------------"])
+    csvwriter.writerow(["Total Months: " + str(total_months)])
+    csvwriter.writerow(["Total: $" + str(net_total)])
+    csvwriter.writerow(["Average Change: $" + str(round(averagechange,2))])
+    csvwriter.writerow(["Greatest Increase in Profits: " + monthinc + " ($" + str(greatinc) + ")"])
+    csvwriter.writerow(["Greatest Increase in Profits: " + monthdec + " ($" + str(greatdec) + ")"])
