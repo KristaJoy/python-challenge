@@ -52,6 +52,7 @@ elif winner == li_total:
 else:
     mostvotes = "O'Tooley"
 
+#print results
 print("Election Results")
 print("-------------------------------------")
 print(f"Total Votes: {total_votes}")
@@ -64,3 +65,21 @@ print("-------------------------------------")
 print(f"Winner: {mostvotes}")
 print("-------------------------------------")
 
+#output results to text file
+output_path = os.path.join('Analysis', 'Analysis.txt')
+with open(output_path, 'w') as output:
+    
+    csvwriter = csv.writer(output, delimiter=',')
+
+    # Write the Analysis
+    csvwriter.writerow(["Election Results"])
+    csvwriter.writerow(["-------------------------------------"])
+    csvwriter.writerow(["Total Votes: " + str(total_votes)])
+    csvwriter.writerow(["-------------------------------------"])
+    csvwriter.writerow(["Khan: " + str(round(khan_perc, 3)) + "% (" + str(khan_total) + ")"])
+    csvwriter.writerow(["Correy: " + str(round(correy_perc, 3)) + "% (" + str(corr_total) + ")"])
+    csvwriter.writerow(["Li: " + str(round(li_perc, 3)) + "% (" + str(li_total) + ")"])
+    csvwriter.writerow(["O'Tooley: " + str(round(otoo_perc, 3)) + "% (" + str(otoo_total) + ")"])
+    csvwriter.writerow(["-------------------------------------"])
+    csvwriter.writerow(["Winner: " + str(mostvotes)])
+    csvwriter.writerow(["-------------------------------------"])
